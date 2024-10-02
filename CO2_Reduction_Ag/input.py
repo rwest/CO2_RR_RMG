@@ -1,11 +1,13 @@
 # Data sources
 database(
-    thermoLibraries=['surfaceThermoPt111', 'primaryThermoLibrary', 'thermo_DFT_CCSDTF12_BAC','DFT_QCI_thermo', 'electrocatThermo', 'CO2RR_Adsorbates_Ag111'],
+    thermoLibraries=['surfaceThermoPt111', 'primaryThermoLibrary', 'thermo_DFT_CCSDTF12_BAC','DFT_QCI_thermo', 'electrocatThermo', 
+    # 'CO2RR_Adsorbates_Ag111'
+    ],
     reactionLibraries = [('Surface/CPOX_Pt/Deutschmann2006_adjusted', False)],
     seedMechanisms = [],
     kineticsDepositories = ['training'],
     kineticsFamilies = ['electrochem', 
-                        'surface_CO2',
+                        'surface',
                         # 'Surface_Adsorption_Single', 
                         # 'Surface_Adsorption_vdW'
                         ],
@@ -159,10 +161,91 @@ forbidden(
         )
 )
 
+liquidSurfaceReactor(
+    temperature=(300,'K'),
+    liqPotential=(0,'V'),
+    surfPotential=(-2.0,'V'),
+    initialConcentrations={
+        "CO2": (1e-3,'mol/cm^3'),
+        "proton": (1e-4,'mol/m^3'),
+    },
+	initialSurfaceCoverages={
+        # "HX": 0.5,
+        # # "CXO2": 0.0,
+        "CHO2X": 0.1,
+        "CO2HX": 0.1,
+        "vacantX": 0.1,
+        "CO2X": 0.4,
+        'OX': 0.1,
+        'OCX': 0.1,
+        'CH2O2X': 0.05,
+        'CHOX': 0.04,
+        'CH2OX': 0.01
+    },
+    surfaceVolumeRatio=(1.0e5, 'm^-1'),
+    terminationTime=(1.0e3,'sec'),
+    # terminationConversion={'CO2': 0.90},
+    # constantSpecies=["proton"],
+ )
+
+liquidSurfaceReactor(
+    temperature=(300,'K'),
+    liqPotential=(0,'V'),
+    surfPotential=(-1.5,'V'),
+    initialConcentrations={
+        "CO2": (1e-3,'mol/cm^3'),
+        "proton": (1e-4,'mol/m^3'),
+    },
+	initialSurfaceCoverages={
+        # "HX": 0.5,
+        # # "CXO2": 0.0,
+        "CHO2X": 0.1,
+        "CO2HX": 0.1,
+        "vacantX": 0.1,
+        "CO2X": 0.4,
+        'OX': 0.1,
+        'OCX': 0.1,
+        'CH2O2X': 0.05,
+        'CHOX': 0.04,
+        'CH2OX': 0.01
+    },
+    surfaceVolumeRatio=(1.0e5, 'm^-1'),
+    terminationTime=(1.0e3,'sec'),
+    # terminationConversion={'CO2': 0.90},
+    # constantSpecies=["proton"],
+ )
+
+liquidSurfaceReactor(
+    temperature=(300,'K'),
+    liqPotential=(0,'V'),
+    surfPotential=(-1.0,'V'),
+    initialConcentrations={
+        "CO2": (1e-3,'mol/cm^3'),
+        "proton": (1e-4,'mol/m^3'),
+    },
+	initialSurfaceCoverages={
+        # "HX": 0.5,
+        # # "CXO2": 0.0,
+        "CHO2X": 0.1,
+        "CO2HX": 0.1,
+        "vacantX": 0.1,
+        "CO2X": 0.4,
+        'OX': 0.1,
+        'OCX': 0.1,
+        'CH2O2X': 0.05,
+        'CHOX': 0.04,
+        'CH2OX': 0.01
+    },
+    surfaceVolumeRatio=(1.0e5, 'm^-1'),
+    terminationTime=(1.0e3,'sec'),
+    # terminationConversion={'CO2': 0.90},
+    # constantSpecies=["proton"],
+ )
+
 # liquidSurfaceReactor(
 #     temperature=(300,'K'),
 #     liqPotential=(0,'V'),
-#     surfPotential=(-3.0,'V'),
+#     surfPotential=(-0.5,'V'),
 #     initialConcentrations={
 #         "CO2": (1e-3,'mol/cm^3'),
 #         "proton": (1e-4,'mol/m^3'),
@@ -181,115 +264,7 @@ forbidden(
 #         'CH2OX': 0.01
 #     },
 #     surfaceVolumeRatio=(1.0e5, 'm^-1'),
-#     terminationTime=(1,'sec'),
-#     # terminationConversion={'CO2': 0.90},
-#     # constantSpecies=["proton"],
-#  )
-
-liquidSurfaceReactor(
-    temperature=(300,'K'),
-    liqPotential=(0,'V'),
-    surfPotential=(-0.5,'V'),
-    initialConcentrations={
-        "CO2": (1e-3,'mol/cm^3'),
-        "proton": (1e-4,'mol/m^3'),
-    },
-	initialSurfaceCoverages={
-        # "HX": 0.5,
-        # # "CXO2": 0.0,
-        "CHO2X": 0.1,
-        "CO2HX": 0.1,
-        "vacantX": 0.1,
-        "CO2X": 0.4,
-        'OX': 0.1,
-        'OCX': 0.1,
-        'CH2O2X': 0.05,
-        'CHOX': 0.04,
-        'CH2OX': 0.01
-    },
-    surfaceVolumeRatio=(1.0e5, 'm^-1'),
-    terminationTime=(1,'sec'),
-    # terminationConversion={'CO2': 0.90},
-    # constantSpecies=["proton"],
- )
-
-liquidSurfaceReactor(
-    temperature=(300,'K'),
-    liqPotential=(0,'V'),
-    surfPotential=(0,'V'),
-    initialConcentrations={
-        "CO2": (1e-3,'mol/cm^3'),
-        "proton": (1e-4,'mol/m^3'),
-    },
-	initialSurfaceCoverages={
-        # "HX": 0.5,
-        # # "CXO2": 0.0,
-        "CHO2X": 0.1,
-        "CO2HX": 0.1,
-        "vacantX": 0.1,
-        "CO2X": 0.4,
-        'OX': 0.1,
-        'OCX': 0.1,
-        'CH2O2X': 0.05,
-        'CHOX': 0.04,
-        'CH2OX': 0.01
-    },
-    surfaceVolumeRatio=(1.0e5, 'm^-1'),
-    terminationTime=(1,'sec'),
-    # terminationConversion={'CO2': 0.90},
-    # constantSpecies=["proton"],
- )
-
-liquidSurfaceReactor(
-    temperature=(300,'K'),
-    liqPotential=(0,'V'),
-    surfPotential=(0.5,'V'),
-    initialConcentrations={
-        "CO2": (1e-3,'mol/cm^3'),
-        "proton": (1e-4,'mol/m^3'),
-    },
-	initialSurfaceCoverages={
-        # "HX": 0.5,
-        # # "CXO2": 0.0,
-        "CHO2X": 0.1,
-        "CO2HX": 0.1,
-        "vacantX": 0.1,
-        "CO2X": 0.4,
-        'OX': 0.1,
-        'OCX': 0.1,
-        'CH2O2X': 0.05,
-        'CHOX': 0.04,
-        'CH2OX': 0.01
-    },
-    surfaceVolumeRatio=(1.0e5, 'm^-1'),
-    terminationTime=(1,'sec'),
-    # terminationConversion={'CO2': 0.90},
-    # constantSpecies=["proton"],
- )
-
-# liquidSurfaceReactor(
-#     temperature=(300,'K'),
-#     liqPotential=(0,'V'),
-#     surfPotential=(3.0,'V'),
-#     initialConcentrations={
-#         "CO2": (1e-3,'mol/cm^3'),
-#         "proton": (1e-4,'mol/m^3'),
-#     },
-# 	initialSurfaceCoverages={
-#         # "HX": 0.5,
-#         # # "CXO2": 0.0,
-#         "CHO2X": 0.1,
-#         "CO2HX": 0.1,
-#         "vacantX": 0.1,
-#         "CO2X": 0.4,
-#         'OX': 0.1,
-#         'OCX': 0.1,
-#         'CH2O2X': 0.05,
-#         'CHOX': 0.04,
-#         'CH2OX': 0.01
-#     },
-#     surfaceVolumeRatio=(1.0e5, 'm^-1'),
-#     terminationTime=(1,'sec'),
+#     terminationTime=(1.0e3,'sec'),
 #     # terminationConversion={'CO2': 0.90},
 #     # constantSpecies=["proton"],
 #  )
