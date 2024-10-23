@@ -7,9 +7,19 @@ database(
     seedMechanisms = [],
     kineticsDepositories = ['training'],
     kineticsFamilies = ['electrochem', 
-                        'surface',
-                        # 'Surface_Adsorption_Single', 
-                        # 'Surface_Adsorption_vdW'
+                        # 'surface',
+                        'Surface_Abstraction',
+                        'Surface_Abstraction_vdW',
+                        'Surface_Abstraction_Single_vdW',
+                        'Surface_Abstraction_Beta_double_vdW',
+                        'Surface_Adsorption_Dissociative',
+                        'Surface_Adsorption_Dissociative_Double',
+                        'Surface_Adsorption_vdW',
+                        'Surface_Dissociation',
+                        'Surface_Dissociation_Double_vdW',
+                        'Surface_Dissociation_vdW',
+                        'Surface_EleyRideal_Addition_Multiple_Bond',
+                        'Surface_Migration',
                         ],
     kineticsEstimator = 'rate rules',
 
@@ -280,12 +290,12 @@ simulator(
 
 model(
     toleranceKeepInEdge=1E-16,
-    toleranceMoveToCore=1E-6,
-    toleranceRadMoveToCore=1E-8,
+    toleranceMoveToCore=1E-3,
+    toleranceRadMoveToCore=1E-4,
     toleranceInterruptSimulation=1E6,
     filterReactions=False,
-    maximumEdgeSpecies=10000,
-    toleranceBranchReactionToCore=1E-8,
+    maximumEdgeSpecies=5000,
+    toleranceBranchReactionToCore=1E-6,
     branchingIndex=0.5,
     branchingRatioMax=1.0,
 )
@@ -301,7 +311,7 @@ options(
 generatedSpeciesConstraints(
     allowed=['input species','reaction libraries'],
     maximumSurfaceSites=2,
-    maximumCarbonAtoms=4,
+    maximumCarbonAtoms=3,
     maximumOxygenAtoms=2,
     maximumRadicalElectrons=1,
 )
