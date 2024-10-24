@@ -166,7 +166,7 @@ Phases:
       + Solvation correction with water as solvent and solute estimated using '
     name: proton
     radicalelectrons: 0
-    smiles: H+
+    smiles: '[H]'
     thermo:
       polys:
       - Tmax: 4561.14441004685
