@@ -290,12 +290,12 @@ simulator(
 
 model(
     toleranceKeepInEdge=1E-16,
-    toleranceMoveToCore=1E-3,
-    toleranceRadMoveToCore=1E-4,
+    toleranceMoveToCore=1E-6,
+    toleranceRadMoveToCore=1E-8,
     toleranceInterruptSimulation=1E6,
     filterReactions=False,
     maximumEdgeSpecies=5000,
-    toleranceBranchReactionToCore=1E-6,
+    toleranceBranchReactionToCore=1E-8,
     branchingIndex=0.5,
     branchingRatioMax=1.0,
 )
@@ -311,7 +311,7 @@ options(
 generatedSpeciesConstraints(
     allowed=['input species','reaction libraries'],
     maximumSurfaceSites=2,
-    maximumCarbonAtoms=3,
+    maximumCarbonAtoms=4,
     maximumOxygenAtoms=2,
     maximumRadicalElectrons=1,
 )
