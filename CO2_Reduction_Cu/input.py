@@ -1,12 +1,10 @@
 # Data sources
 database(
-    thermoLibraries=['surfaceThermoPt111', 'primaryThermoLibrary', 'thermo_DFT_CCSDTF12_BAC','DFT_QCI_thermo', 'electrocatThermo', 
-    # 'CO2RR_Adsorbates_Ag111'
-    ],
+    thermoLibraries=['surfaceThermoPt111', 'primaryThermoLibrary', 'thermo_DFT_CCSDTF12_BAC','DFT_QCI_thermo', 'electrocatThermo'],
     reactionLibraries = [('Surface/CPOX_Pt/Deutschmann2006_adjusted', False)],
     seedMechanisms = [],
     kineticsDepositories = ['training'],
-    kineticsFamilies = ['electrochem', 
+    kineticsFamilies = ['electrochem',
                         # 'surface',
                         'Surface_Abstraction',
                         'Surface_Abstraction_vdW',
@@ -106,7 +104,7 @@ species(
     label='OCX',
     reactive=True,
     structure=adjacencyList("""
-1 O u0 p2 c0 {2,D} 
+1 O u0 p2 c0 {2,D}
 2 C u0 p0 c0 {1,D} {3,D}
 3 X u0 p0 c0 {2,D}
 """),
@@ -116,7 +114,7 @@ species(
     label='OX',
     reactive=True,
     structure=adjacencyList("""
-1 O u0 p2 c0 {2,D} 
+1 O u0 p2 c0 {2,D}
 2 X u0 p0 c0 {1,D}
 """),
 )
@@ -176,7 +174,7 @@ liquidSurfaceReactor(
     liqPotential=(0,'V'),
     surfPotential=(-1.914,'V'),
     initialConcentrations={
-        "CO2": (1e-3,'mol/cm^3'),
+        "CO2": (1e1,'mol/m^2'),
         "proton": (1e-4,'mol/m^3'),
     },
 	initialSurfaceCoverages={
@@ -195,7 +193,7 @@ liquidSurfaceReactor(
     surfaceVolumeRatio=(36, 'm^-1'),
     terminationTime=(1.0e3,'sec'),
     # terminationConversion={'CO2': 0.90},
-    # constantSpecies=["proton"],
+    constantSpecies=["proton","CO2"],
  )
 
 liquidSurfaceReactor(
@@ -203,7 +201,7 @@ liquidSurfaceReactor(
     liqPotential=(0,'V'),
     surfPotential=(-1.414,'V'),
     initialConcentrations={
-        "CO2": (1e-3,'mol/cm^3'),
+        "CO2": (1e1,'mol/m^2'),
         "proton": (1e-4,'mol/m^3'),
     },
 	initialSurfaceCoverages={
@@ -222,7 +220,7 @@ liquidSurfaceReactor(
     surfaceVolumeRatio=(36, 'm^-1'),
     terminationTime=(1.0e3,'sec'),
     # terminationConversion={'CO2': 0.90},
-    # constantSpecies=["proton"],
+    constantSpecies=["proton","CO2"],
  )
 
 liquidSurfaceReactor(
@@ -230,7 +228,7 @@ liquidSurfaceReactor(
     liqPotential=(0,'V'),
     surfPotential=(-0.914,'V'),
     initialConcentrations={
-        "CO2": (1e-3,'mol/cm^3'),
+        "CO2": (1e1,'mol/m^2'),
         "proton": (1e-4,'mol/m^3'),
     },
 	initialSurfaceCoverages={
@@ -249,7 +247,7 @@ liquidSurfaceReactor(
     surfaceVolumeRatio=(36, 'm^-1'),
     terminationTime=(1.0e3,'sec'),
     # terminationConversion={'CO2': 0.90},
-    # constantSpecies=["proton"],
+    constantSpecies=["proton","CO2"],
  )
 
 liquidSurfaceReactor(
@@ -257,7 +255,7 @@ liquidSurfaceReactor(
     liqPotential=(0,'V'),
     surfPotential=(-0.614,'V'),
     initialConcentrations={
-        "CO2": (1e-3,'mol/cm^3'),
+        "CO2": (1e1,'mol/m^2'),
         "proton": (1e-4,'mol/m^3'),
     },
 	initialSurfaceCoverages={
@@ -276,7 +274,7 @@ liquidSurfaceReactor(
     surfaceVolumeRatio=(36, 'm^-1'),
     terminationTime=(1.0e3,'sec'),
     # terminationConversion={'CO2': 0.90},
-    # constantSpecies=["proton"],
+    constantSpecies=["proton","CO2"],
  )
 
 solvation(
@@ -284,13 +282,13 @@ solvation(
 )
 
 simulator(
-    atol=1e-16,
+    atol=1e-20,
     rtol=1e-8,
 )
 
 model(
     toleranceKeepInEdge=1E-16,
-    toleranceMoveToCore=1E-3,
+    toleranceMoveToCore=1E-6,
     toleranceRadMoveToCore=1E-6,
     toleranceInterruptSimulation=1E3,
     filterReactions=False,
@@ -313,6 +311,5 @@ generatedSpeciesConstraints(
     maximumSurfaceSites=2,
     maximumCarbonAtoms=2,
     maximumOxygenAtoms=2,
-    maximumRadicalElectrons=0,
+    maximumRadicalElectrons=1,
 )
-
